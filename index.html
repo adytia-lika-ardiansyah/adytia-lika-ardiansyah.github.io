@@ -177,9 +177,6 @@ svg.icon-mode-2 {
             display: none;
             margin-top: -20px;
         }
-        .post-view {
-        color: #f8f7ff;
-             </style>
 </head>
 
 <body>
@@ -279,20 +276,7 @@ checkbox.addEventListener("change", ({target}) => {
                 videoPlayer.style.display = 'none';
             }, 5000); 
         }
-        
-        $.each($(".post-view[data-id]"), function(a, e) {
-        var l = $(e).parent().find("#postviews").addClass("view-load"),
-            i = new Firebase("https://adytia-lika-ardiansyah-default-rtdb.asia-southeast1.firebasedatabase.app/id/github/" + $(e).attr("data-id"));
-        i.once("value", function(a) {
-            var n = a.val(),
-                t = !1;
-            null == n && (n = {}, n.value = 0, n.url = window.location.href, n.id = $(e).attr("data-id"), t = !0), l.removeClass("view-load").text(n.value), n.value++, "/" != window.location.pathname && (t ? i.set(n) : i.child("value").set(n.value))
-        })
-    });
     	       </script>
 </body>
-<span class='post-view' expr:data-id='data:post.id' style='margin-left:-15px'>
-    <span class='view-load' id='postviews' /> <span class="post-view-text">hits</span>
-</span>
-</span>
+
 </html>
