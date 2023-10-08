@@ -177,19 +177,40 @@ svg.icon-mode-2 {
             display: none;
             margin-top: -20px;
         }
-        .post-view {
-        color: #f8f7ff;
+@keyframes fade-color-animation {
+  0% {
+    color: #202026;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Initial glow effect */
+  }
+  33% {
+    color: var(--main-color);
+    text-shadow: 0 0 20px var(--main-color); /* Glow effect with main color */
+  }
+  66% {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect with white color */
+  }
+  100% {
+    color: #202026;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Back to initial glow effect */
+  }
+}
+
+.fade-color {
+  display: inline-block;
+  animation: fade-color-animation 8s ease-in-out infinite;
+}
              </style>
 </head>
 
 <body>
     <header>
-        <img src="https://ia904709.us.archive.org/9/items/20230929-141928/20230929_141928.png" alt="Avatar">
+        <img src="https://firebasestorage.googleapis.com/v0/b/adytia-lika-ardiansyah.appspot.com/o/avatar.webp?alt=media&token=b831f9b9-394d-45fc-b137-8a23b0060677&_gl=1*1p5cdbr*_ga*MTg5ODQ2MTQxNi4xNjk2MjM0NDMx*_ga_CW55HF8NVT*MTY5Njc0Njc1NC42LjEuMTY5Njc0Njc5Mi4yMi4wLjA." alt="Avatar">
     </header>
 
     <section>
         <h2>Adytia Lika Ardiansyah</h2>
-        <p>Music <b>Enthusiast</b> | Data Hoarder</p>
+        <p>Music <span class="fade-color">Enthusiast</span> | Data Hoarder</p>
         <div class="toggle">
             <svg class="icon-mode" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                 <rect fill="none" height="24" width="24"/>
@@ -224,7 +245,7 @@ svg.icon-mode-2 {
                     Facebook</a>
     </section>
      
-     <div id="video-player" disableRemotePlayback>
+     <div id="video-player">
         <video autoplay muted loop width="157" height="157">
             <source src="https://adytia-lika-ardiansyah.github.io/malas/malas.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -279,6 +300,7 @@ checkbox.addEventListener("change", ({target}) => {
                 videoPlayer.style.display = 'none';
             }, 5000); 
         }
+        
     	       </script>
 </body>
 
