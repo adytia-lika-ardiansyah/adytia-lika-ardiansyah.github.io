@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pray Times Example</title>
+  <script src="http://praytimes.org/code/v2/js/PrayTimes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://raw.githubusercontent.com/xsoh/moment-hijri/master/moment-hijri.js"></script>
+  <style>
+  	:root {
+  --main-color: #6C63FF;
+  --bg: #202026;
+  --text-color: #F8F7FF;
+}
+  
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: var(--bg);
+    }
+    #prayTimes {
+      font-size: 1.2em;
+      color: #F8F7FF;
+      margin-bottom: 20px;
+    }
+    #currentDateTime {
+      font-size: 1em;
+      color: #777;
+    }
+    
+    /* Add some basic styling for the select container */
+    .select-container {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    /* Style the select dropdown */
+    select {
+      padding: 8px;
+      font-size: 16px;
+    }
+    b2 {
+  color: var(--text-color);
+  font-size: 20px;
+    }
+  </style>
+</head>
+<body style="--main-color: #6C63FF; --bg: #202026; --text-color: #F8F7FF;">
+
+  <h1 style="color: var(--main-color); font-size: 25px;">Waktu Salat di Indonesia dan Dunia</h1>
+
+  <div class="select-container">
+    <select id="location" onchange="updatePrayTimes(this.value)" style="background-color: var(--main-color); color: #F8F7FF; border: 2px solid var(--text-color);">
+      <option value="[2.057218, 99.958013]">Pilih Lokasi</option>
+      <option value="[3.595195, 98.672222]">Medan, Indonesia</option>
+      <option value="[-6.2088, 106.8456]">Jakarta, Indonesia</option>
+      <option value="[-5.1477, 119.4327]">Makassar, Indonesia</option>
+      <option value="[-2.5489, 140.7175]">Jayapura, Indonesia</option>
+      <option value="[3.1390, 101.6869]">Kuala Lumpur, Malaysia</option>
+      <option value="[13.41, 122.56]">Manila, Philippines</option>
+      <option value="[35.6895, 139.6917]">Tokyo, Japan</option>
+      <option value="[37.5665, 126.9780]">Seoul, South Korea</option>
+      <option value="[33.6844, 73.0479]">Islamabad, Pakistan</option>
+      <option value="[51.5074, -0.1278]">London, UK</option>
+      <option value="[40.7128, -74.0060]">New York, USA</option>
+       <option value="[-6.2088, 106.8456]">Mumbai, India</option>
+      
+      <option value="[55.7558, 37.6176]">Moscow, Russia</option>
+      <!-- Add more locations as needed -->
+    </select>
+  </div>
+
+  <div id="prayTimes"></div>
+  <div id="currentDateTime"></div>
+  
+  <script>
+    /// Function to update prayer times based on selected location
+    function updatePrayTimes(selectedLocation) {
+      const coordinates = JSON.parse(selectedLocation);
+      displayPrayTimes(coordinates);
+    }
+
+    // Modified function to accept coordinates as a parameter
+    function displayPrayTimes(coordinates) {
+      const prayTimes = new PrayTimes();
+
+      // Set configuration
+      prayTimes.setMethod('ISNA');
+      prayTimes.adjust({ asr: 'Standard' });
+
+      // Get prayer times and Hijri date for today
+      const currentDate = new Date();
+      const currentPrayerTimes = prayTimes.getTimes(currentDate, coordinates);
+      const currentHijriDate = getHijriDate(currentDate);
+
+      // Display prayer times and Hijri date
+      const prayTimesElement = document.getElementById('prayTimes');
+      prayTimesElement.innerHTML = `
+        <strong>Waktu Salat Hari Ini:</strong><br>
+        	<strong><b2><b>Tanggal: ${currentHijriDate}</b></b2></strong><br>
+        	<p></p>
+        Fajr: ${currentPrayerTimes.fajr} WIB<br>
+        Dhuhr: ${currentPrayerTimes.dhuhr} WIB<br>
+        Asr: ${currentPrayerTimes.asr} WIB<br>
+        Maghrib: ${currentPrayerTimes.maghrib} WIB<br>
+        Isha: ${currentPrayerTimes.isha} WIB<br>
+      `;
+    }
+
+    // Fungsi untuk mendapatkan tanggal Hijri
+    function getHijriDate(date) {
+      const hijriDate = moment(date).format('D/M/YYYY');
+      return hijriDate;
+    }
+
+    // Fungsi untuk menampilkan waktu saat ini
+    function displayCurrentDateTime() {
+      const currentDateTime = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+      const formattedDateTime = currentDateTime.toLocaleString('en-US', options);
+
+      // Tampilkan waktu saat ini
+      const currentDateTimeElement = document.getElementById('currentDateTime');
+      currentDateTimeElement.textContent = `Waktu Saat Ini: ${formattedDateTime}`;
+    }
+
+    // Panggil fungsi untuk menampilkan waktu salat
+    displayPrayTimes();
+
+    // Panggil fungsi untuk menampilkan waktu saat ini
+    displayCurrentDateTime();
+
+    // Update waktu saat ini setiap detik
+    setInterval(displayCurrentDateTime, 1000);
+  </script>
+
+</body>
+</html>

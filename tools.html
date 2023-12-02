@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        L
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .website {
+            margin: 20px 0;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+:root {
+  --main-color: #6C63FF;
+  --bg: #202026;
+  --text-color: #F8F7FF;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg);
+  user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+}
+
+p {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.10em;
+  color: var(--text-color);
+}
+
+b {
+  color: var(--main-color);
+}
+
+b2 {
+  color: #38b6ff;
+}
+
+b3 {
+  color: var(--text-color);
+  font-family: "Lucida Console", monospace;
+  text-size: 50px;
+}
+
+svg, img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+a svg.icons-btn, a svg.icons-btn {
+  fill: var(--text-color);
+}
+
+.btn {
+  display: flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+  width: 200px;
+  margin: 25px 0;
+  padding: 15px 25px;
+  overflow: hidden;
+  border: 2px solid var(--text-color);
+  position: relative;
+}
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  z-index: -1;
+  transition: 0.7s ease;
+}
+
+.btn-animation:before {
+  width: 110%;
+  height: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.btn-animation:hover:before {
+  height: 450%;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 52px;
+  height: 27px;
+  background: var(--text-color);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+label::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--main-color);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background-color: var(--text-color);
+}
+
+input:checked + label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 45px;
+}
+
+svg.icon-mode {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-color);
+}
+
+svg.icon-mode-2 {
+  margin-left: 8px;
+}/*# sourceMappingURL=main.css.map */
+
+
+        .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: bounceInUp 0.5s; /* Use the bounceInUp animation */
+    }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1c1c1c;
+            padding: 40px; /* Lebih besar padding untuk membuat popup lebih besar */
+            border-radius: 10px; /* Lebih besar border-radius untuk membuat sudut melengkung lebih besar */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Lebih besar box-shadow untuk memberi efek bayangan yang lebih besar */
+            width: 80%; /* Lebih besar width untuk membuat popup lebih lebar */
+            max-width: 600px; /* Lebih besar max-width untuk memberi batasan lebar maksimum */
+        }
+
+        
+       .close {
+        color: #ffffff;
+        font-size: 30px; /* Increase the font size for a zoomed-in effect */
+        cursor: pointer;
+        position: absolute;
+        top: 10px; /* Adjust the top position for spacing */
+        right: 10px; /* Adjust the right position for spacing */
+    }
+
+         .popup-img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+        .website-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .website-link .btn {
+            background-color: var(--main-color);
+            border: 2px solid #f8f7ff;
+            color: var(--text-color);
+        }
+        /* Ganti warna teks untuk tautan pada latar belakang hitam */
+a {
+  color: #3498db; /* Warna tautan */
+  text-decoration: none;
+}
+
+/* Ganti warna teks untuk tautan saat dihover pada latar belakang hitam */
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    
+    <div class="website">
+    <a class="btn btn-animation" onclick="showPopup('<p><b3>LOREM IPSUM</b3></p> adalah teks palsu atau dummy yang digunakan sebagai pengganti sementara dalam desain grafis dan teks pengisi atau filler text dalam layout.', 'lorem-ipsum-gen.html')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M18 3v2H2V3h16zm-6 4v2H2V7h10zm6 0v2h-4V7h4zM8 11v2H2v-2h6zm10 0v2h-8v-2h8zm-4 4v2H2v-2h12z"/></svg> 
+         LIPSUM GEN</a>
+         </div>
+    
+    <div class="website">
+    <a class="btn btn-animation" onclick="showPopup('<p><b3>JADWAL SHOLAT</b3></p>Halaman ini menampilkan waktu salat harian di Indonesia dan Dunia. Alat ini menggunakan <a href=\'http://praytimes.org/\' target=\'_blank\'>PrayTimes</a> untuk menampilkan waktu sholat, serta <a href=\'https://momentjs.com/\' target=\'_blank\'>Moment.js</a> dan <a href=\'https://www.npmjs.com/package/moment-hijri\' target=\'_blank\'>Moment-Hijri</a> untuk menampilkan tanggal kalender Islam.', 'prayer-time.html')">
+     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m13.025 11.5l1.475-1.075l1.45 1.075l-.575-1.7l1.475-1.075h-1.8L14.5 7l-.55 1.725h-1.825L13.6 9.8l-.575 1.7ZM12 17q2.075 0 3.538-1.45T17 12q0-.2-.012-.4t-.063-.4q-.275 1.175-1.225 1.938t-2.225.762q-1.5 0-2.525-1.025T9.925 10.35q0-1.15.65-2.062T12.275 7H12Q9.9 7 8.45 8.463T7 12q0 2.1 1.45 3.55T12 17Zm0 6.3L8.65 20H4v-4.65L.7 12L4 8.65V4h4.65L12 .7L15.35 4H20v4.65L23.3 12L20 15.35V20h-4.65L12 23.3Zm0-2.8l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18h3.5l2.5 2.5Zm0-8.5Z"/></svg> 
+      PRAYER TIME</a>
+</div>
+
+    
+
+    <!-- Tambahkan website lainnya sesuai kebutuhan -->
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-img" id="popup-img">
+            <p id="popup-text"></p>
+            <div class="website-link">
+                <a href="#" target="_blank" class="btn btn-animation">Visit Tools</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPopup(website, link, image) {
+        setTimeout(function () {
+            document.getElementById('popup-text').innerHTML = website;
+            
+            document.querySelector('.website-link .btn').href = link;
+
+            // Show popup with bounceInUp animation
+            var popup = document.getElementById('popup');
+            popup.style.display = 'flex';
+            popup.classList.add('animate__animated', 'animate__bounceInUp'); // Add Animate.css classes
+        }, 800); // 800 milliseconds delay
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

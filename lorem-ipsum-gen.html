@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        L
+
+        .container {
+  max-width: auto;
+  margin: 50 auto;
+  background-color: var(--bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+        .website {
+            margin: 20px 0;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+:root {
+  --main-color: #6C63FF;
+  --bg: #202026;
+  --text-color: #F8F7FF;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg);
+  user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+}
+
+p {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.10em;
+  color: var(--text-color);
+}
+
+b {
+  color: var(--main-color);
+}
+
+b2 {
+  color: #38b6ff;
+}
+
+b3 {
+  color: #8b3323;
+}
+
+svg, img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+a svg.icons-btn, a svg.icons-btn {
+  fill: var(--text-color);
+}
+
+.btn {
+  display: flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+  width: 200px;
+  margin: 25px 0;
+  padding: 15px 25px;
+  overflow: hidden;
+  border: 2px solid var(--text-color);
+  position: relative;
+}
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  z-index: -1;
+  transition: 0.2s ease;
+}
+
+.btn-animation:before {
+  width: 110%;
+  height: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.btn-animation:hover:before {
+  height: 450%;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+input[type='number'] {
+  padding: 8px;
+  width: 60px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+svg.icon-mode {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-color);
+}
+
+svg.icon-mode-2 {
+  margin-left: 8px;
+}/*# sourceMappingURL=main.css.map */
+
+
+        .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: bounceInUp 0.5s; /* Use the bounceInUp animation */
+    }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1c1c1c;
+            padding: 40px; /* Lebih besar padding untuk membuat popup lebih besar */
+            border-radius: 10px; /* Lebih besar border-radius untuk membuat sudut melengkung lebih besar */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Lebih besar box-shadow untuk memberi efek bayangan yang lebih besar */
+            width: 80%; /* Lebih besar width untuk membuat popup lebih lebar */
+            max-width: 600px; /* Lebih besar max-width untuk memberi batasan lebar maksimum */
+        }
+
+        
+       .close {
+        color: #ffffff;
+        font-size: 30px; /* Increase the font size for a zoomed-in effect */
+        cursor: pointer;
+        position: absolute;
+        top: 10px; /* Adjust the top position for spacing */
+        right: 10px; /* Adjust the right position for spacing */
+    }
+
+         .popup-img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+        .website-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .website-link .btn {
+            background-color: var(--main-color);
+            border: 2px solid #f8f7ff;
+            color: var(--text-color);
+        }
+        
+    
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+#output {
+  margin-top: 11px;
+  margin-left: -30px;
+  padding: 11px;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+  font-size: 14px;
+  color: var(--text-color);
+  position: absolute;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+} 
+
+.box {
+      box-sizing: border-box;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Style for the text box */
+    .text-box {
+      margin-bottom: 10px;
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    
+    
+
+    <div class="website">
+            <label for="num-paragraphs">Number of paragraphs:</label>
+            <input type="number" id="num-paragraphs" min="1" max="10" value="1" />
+        </div>
+
+        <div class="website">
+            <label for="num-words">Number of words per paragraph:</label>
+            <input type="number" id="num-words" min="1" max="100" value="10" />
+        </div>
+
+        <div class="website">
+            <a class="btn btn-animation" onclick="generateLorem()">Generate Lorem Ipsum</a>
+        </div>
+
+        <div id="output"><p>     Click Button <b2>GENERATE LOREM IPSUM    </b2></p></div>
+    </div>
+
+    <!-- Tambahkan website lainnya sesuai kebutuhan -->
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img src="" alt="Website Screenshot" class="popup-img" id="popup-img">
+            <p id="popup-text"></p>
+            <div class="website-link">
+                <a href="#" target="_blank" class="btn btn-animation">Visit Website</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>function generateLorem() {
+  var numParagraphs = document.getElementById('num-paragraphs').value;
+  var numWords = document.getElementById('num-words').value;
+  var outputDiv = document.getElementById('output');
+
+  var loremIpsumText = generateLoremText(numParagraphs, numWords);
+  outputDiv.innerHTML = loremIpsumText;
+}
+
+function generateLoremText(numParagraphs, numWords) {
+  var loremText = '';
+  var words = [
+    'Lorem',
+    'ipsum',
+    'dolor',
+    'sit',
+    'amet',
+    'consectetur',
+    'adipiscing',
+    'elit',
+    'sed',
+    'do',
+    'eiusmod',
+    'tempor',
+    'incididunt',
+    'ut',
+    'labore',
+    'et',
+    'dolore',
+    'magna',
+    'aliqua',
+    'Ut',
+    'enim',
+    'ad',
+    'minim',
+    'veniam',
+    'quis',
+    'nostrud',
+    'exercitation',
+    'ullamco',
+    'laboris',
+    'nisi',
+    'ut',
+    'aliquip',
+    'ex',
+    'ea',
+    'commodo',
+    'consequat',
+    'Duis',
+    'aute',
+    'irure',
+    'dolor',
+    'in',
+    'reprehenderit',
+    'kintil',
+    'voluptate',
+    'velit',
+    'esse',
+    'cillum',
+    'dolore',
+    'eu',
+    'fugiat',
+    'nulla',
+    'pariatur',
+    'Excepteur',
+    'sint',
+    'occaecat',
+    'cupidatat',
+    'non',
+    'proident',
+    'sunt',
+    'in',
+    'culpa',
+    'qui',
+    'officia',
+    'deserunt',
+    'mollit',
+    'anim',
+    'id',
+    'est',
+    'laborum',
+    'tam',
+    'pu',
+  ];
+
+  for (var i = 0; i < numParagraphs; i++) {
+    var paragraph = '';
+    for (var j = 0; j < numWords; j++) {
+      var randomWord = words[Math.floor(Math.random() * words.length)];
+      paragraph += randomWord + ' ';
+    }
+    loremText += '' + paragraph + '';
+  }
+  return loremText;
+}
+
+document.getElementById('output').addEventListener('dblclick', function() {
+  var outputText = document.getElementById('output').innerText;
+  var textarea = document.createElement('textarea');
+  textarea.value = outputText;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  alert('Text copied to clipboard!');
+});
+
+
+
+</script>
+</body>
+</html>
